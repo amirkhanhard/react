@@ -1,3 +1,6 @@
+// we have to set the default state vlaue else it will throw error
+// the render function render the content with default states
+// then the componentdid mount is called and the states are updated again and then ui is rendered again with updated states
 
 import React, { useRef, useState } from "react";
 
@@ -8,7 +11,7 @@ class NewApp extends React.Component {
       count: 1,
       userInfo: {
         login: "",
-        avatar_url: "sadf",
+        avatar_url: "",
       },
     };
     console.log(this.props.name + " child constructor");
@@ -22,12 +25,6 @@ class NewApp extends React.Component {
       userInfo: data,
     });
     console.log(this.state.userInfo);
-  }
-  componentDidUpdate() {
-    console.log(" component did update");
-  }
-  componentWillUnmount() {
-    console.log(" component Will Unmount");
   }
   handleClick = (action = "") => {
     this.setState({
