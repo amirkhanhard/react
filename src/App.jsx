@@ -1,22 +1,5 @@
-import React, { useRef, useState } from "react";
+import TailwindTest  from "./components/TailwindTest";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log("parent constructor");
-  }
-  componentDidMount() {
-    console.log("parent component did mount");
-  }
-  render() {
-    console.log("parent render");
-    return (
-      <>
-        <h1>asdf</h1>
-        <NewApp name={"amir"}></NewApp>
-      </>
-    );
-  }
+export function App() {
+  return <TailwindTest></TailwindTest>
 }
-
-export default App;
