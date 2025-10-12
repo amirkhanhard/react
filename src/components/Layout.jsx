@@ -1,13 +1,26 @@
-import React from "react"
-import Header from "./Header"
+import React from "react";
+import Header from "./Header";
 import { Outlet } from "react-router-dom";
+import useOnlineStatus from "./CustomHooks/useOnlineStatus.js";
+import OfflineComponent from "./OfflineComponent.jsx";
 
-const Layout = ({children}) => {
-    
-    return <>
+const Layout = ({ children }) => {
+  let status = useOnlineStatus();
+  if (!status) {
+    return (
+      <>
         <Header />
-        <Outlet />
-        <children />
+        <OfflineComponent />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <Header />
+      <Outlet />
+      {status ? <children /> : <OfflineComponent />}
     </>
-}
+  );
+};
 export default Layout;

@@ -1,15 +1,16 @@
-import { StrictMode } from 'react'
+import { StrictMode, lazy, Suspense } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Layout from "./components/Layout.jsx"
 import About from './components/About.jsx'
-import Contact from './components/Contact.jsx'
+// import Contact from './components/Contact.jsx'
 import Home from './components/Home.jsx'
 import ErrorComponent from './components/ErrorComponent'
 import User from './components/User'
 
+const Contact = lazy(()=> import('./components/Contact.jsx'));
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/contact",
-        element:<Contact />
+        element:<Suspense fallback={<h1>Loading...</h1>}><Contact /></Suspense>
       },
       {
         path:"/user/:userId",
