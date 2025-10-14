@@ -1,20 +1,21 @@
-import { createRoot } from "react-dom/client";
 import { StrictMode, lazy, Suspense } from "react";
+import { createRoot } from "react-dom/client";
 import "./index.css";
-import App from "./App.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout1 from "./Layout/Layout1.tsx";
-import ErrorComponent from "./components/ErrorComponent.tsx";
-import Home from "./pages/Home.tsx";
-import About from "./pages/About.tsx";
-import Contact from "./pages/Contact.tsx";
-import User from "./pages/User.tsx";
+
+import Layout1 from "./Layout/Layout1";
+import ErrorComponent from "./components/ErrorComponent";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import User from "./pages/User";
+
+const Contact = lazy(() => import("./pages/Contact"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout1 ></Layout1>,
-    errorElement: <ErrorComponent></ErrorComponent>,
+    element: <Layout1 />,
+    errorElement: <ErrorComponent />,
     children: [
       {
         path: "/",
@@ -40,11 +41,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-createRoot(document.getElementById("root")!).render(
-  // <StrictMode>
-    <RouterProvider router={router}>
-      <App />
-      
-    </RouterProvider>
-  // </StrictMode>
+createRoot(document.getElementById("root") as HTMLElement).render(
+  <StrictMode>
+    <RouterProvider router={router} />
+  </StrictMode>
 );

@@ -1,58 +1,71 @@
 import { useEffect, useState } from "react";
 import RestaurantSkeleton from "../skeleton/RestaurantSkeleton";
+import Restaurant, { withPromotedLabel } from "../components/Restaurant";
 
-function Home() {
-  const [apiResponse, setApiResponse] = useState([]);
+interface RestaurantInfo {
+  name: string;
+  cloudinaryImageId: string;
+  locality: string;
+  costForTwo: string;
+  promoted?: boolean;
+}
+
+interface RestaurantType {
+  info: RestaurantInfo;
+}
+
+interface ApiResponse {
+  data?: {
+    cards?: {
+      card?: {
+        card?: {
+          gridElements?: {
+            infoWithStyle?: {
+              restaurants?: RestaurantType[];
+            };
+          };
+        };
+      };
+    }[];
+  };
+}
+
+const Home: React.FC = () => {
+  const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null);
+  const WithPromotedLabel = withPromotedLabel(Restaurant);
 
   useEffect(() => {
-    try {
-      fetchData();
-    } catch (err) {}
+    const fetchData = async () => {
+      try {
+        const url = import.meta.env.VITE_API1 as string;
+        const response = await fetch(url);
+        const data = await response.json();
+        setApiResponse(data);
+      } catch (err) {
+        console.error("Error fetching data:", err);
+      }
+    };
+
+    fetchData();
   }, []);
 
-  const fetchData = async () => {
-    const url = import.meta.env.VITE_API1;
+  const restaurants =
+    apiResponse?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+      ?.restaurants ?? [];
 
-    const response = await fetch(url);
-
-    const data = await response.json();
-    console.log(data);
-    setApiResponse(data);
-  };
-  const restaurents =
-    apiResponse?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-      ?.restaurants;
-  console.log(restaurents);
-  if (apiResponse.length == 0) return <RestaurantSkeleton />;
+  if (!apiResponse) return <RestaurantSkeleton />;
 
   return (
     <div className="flex flex-wrap gap-5">
-      {restaurents &&
-        restaurents.map((res:any,idx:any) => {
-          const {name, cloudinaryImageId,locality,costForTwo} = res?.info;
-          return (
-            <div key={idx} className="card bg-base-100 w-70 shadow-sm">
-              <figure>
-                <img
-                  src={import.meta.env.VITE_IMAGE_PREFIX+"/"+cloudinaryImageId}
-                  alt="Shoes"
-                  width="200px"
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title">{name}</h2>
-                <p>
-                 {locality}
-                </p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
-                </div>
-              </div>
-            </div>
-          );
-        })}
+      {restaurants.map((res, idx) => {
+        const { promoted } = res.info;
+
+        const Component = promoted || idx % 3 === 0 ? WithPromotedLabel : Restaurant;
+
+        return <Component key={idx} restaurant={res} />;
+      })}
     </div>
   );
-}
+};
 
 export default Home;

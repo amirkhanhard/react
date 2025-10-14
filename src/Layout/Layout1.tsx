@@ -1,33 +1,42 @@
 import React from "react";
-import Header from "../components/Header.js";
+import type { ReactNode } from "react";
+import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
-import Hero from "../components/Hero.js";
-// import useOnlineStatus from "./CustomHooks/useOnlineStatus.js";
-// import OfflineComponent from "./OfflineComponent.jsx";
-interface Children {
-    children:React.FC
+// import Hero from "../components/Hero";
+// import useOnlineStatus from "./CustomHooks/useOnlineStatus";
+// import OfflineComponent from "./OfflineComponent";
+
+interface Layout1Props {
+  children?: ReactNode;
 }
-const Layout1 = ({ children }:Children) => {
-  let status = false;//useOnlineStatus();
+
+const Layout1: React.FC<Layout1Props> = ({ children }) => {
+  const status = false; // useOnlineStatus();
+
   if (!status) {
     return (
       <>
         <Header />
-        {/* <Hero></Hero> */}
+        {/* <Hero /> */}
         <div className="px-5 py-5">
-            <Outlet />
+          <Outlet />
+          {children}
         </div>
         {/* <OfflineComponent /> */}
       </>
     );
   }
 
-//   return (
-//     <>
-//       <Header />
-//       <Outlet />
-//       {status ? <children /> : <OfflineComponent />}
-//     </>
-//   );
+  // Uncomment and modify if you later add online/offline logic
+  // return (
+  //   <>
+  //     <Header />
+  //     <Outlet />
+  //     {status ? children : <OfflineComponent />}
+  //   </>
+  // );
+
+  return null;
 };
+
 export default Layout1;
