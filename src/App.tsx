@@ -1,14 +1,19 @@
-import { ColorPicker } from 'antd';
-import React from 'react';
-import ColorPicker1 from './components/ColorPicker1';
-import Sample from './components/Sample';
+import * as React from "react";
+import Rating1 from "./components/Rating";
+import BadgeVisibility from "./components/Badge";
+import AlertDialogSlide from "./components/AlertDialogSlide";
+import Variants from "./components/Variants";
 
-const App: React.FC = () => (
-  <>
-    <ColorPicker1></ColorPicker1>
-    <Sample></Sample>
+export default function App() {
 
- </>
-);
-
-export default App;
+  return (
+    <div style={{padding:"15px"}}>
+      <Rating1></Rating1>
+      <BadgeVisibility></BadgeVisibility>
+      <AlertDialogSlide></AlertDialogSlide>
+      <div style={{display:"flex",gap:"5px"}}>
+        <Variants></Variants><Variants></Variants><Variants></Variants><Variants></Variants><Variants></Variants>
+      </div>
+    </div>
+  );
+}

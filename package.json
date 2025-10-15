@@ -1,5 +1,5 @@
 {
-  "name": "ant",
+  "name": "mui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^5.27.4",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.3.4",
+    "@mui/material": "^7.3.4",
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
