@@ -6,8 +6,8 @@ interface RestaurantInfo {
   cloudinaryImageId: string;
   locality: string;
   costForTwo: string;
+  id: string;
 }
-
 interface RestaurantProps {
   restaurant: {
     info: RestaurantInfo;
@@ -15,9 +15,7 @@ interface RestaurantProps {
 }
 
 const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
-  const { name, cloudinaryImageId, locality, costForTwo } = restaurant?.info;
-  const restaurantLink = restaurant?.cta?.link;
-    console.log(restaurantLink);
+  const { name, cloudinaryImageId, locality, costForTwo,id } = restaurant?.info;
   return (
     <div className="card bg-base-100 w-70 shadow-sm">
       <figure>
@@ -28,7 +26,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
         />
       </figure>
       <div className="card-body">
-        <h2 className="card-title"><Link to={`/${restaurantLink}`}>{name}</Link></h2>
+        <h2 className="card-title"><Link to={`/restaurant/${id}`}>{name}</Link></h2>
         <p>{locality}</p>
         <p>{costForTwo}</p>
         <div className="card-actions justify-start">

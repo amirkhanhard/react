@@ -6,11 +6,12 @@ import { Outlet } from "react-router-dom";
 // import useOnlineStatus from "./CustomHooks/useOnlineStatus";
 // import OfflineComponent from "./OfflineComponent";
 
-interface Layout1Props {
-  children?: ReactNode;
-}
+// interface Layout1Props {
+//   children?: ReactNode;
+// }
 
-const Layout1: React.FC<Layout1Props> = ({ children }) => {
+// const Layout1: React.FC<Layout1Props> = ({ children }) => {
+  const Layout1: React.FC= () => {
   const status = false; // useOnlineStatus();
 
   if (!status) {
@@ -20,7 +21,7 @@ const Layout1: React.FC<Layout1Props> = ({ children }) => {
         {/* <Hero /> */}
         <div className="px-5 py-5">
           <Outlet />
-          {children}
+          {/* {children} */}
         </div>
         {/* <OfflineComponent /> */}
       </>

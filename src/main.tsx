@@ -8,6 +8,7 @@ import ErrorComponent from "./components/ErrorComponent";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import User from "./pages/User";
+import RestaurantInfo from "./pages/RestaurantInfo";
 
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/user/:userId",
         element: <User />,
+      },
+      {
+        path: "/restaurant/:id",
+        element: <RestaurantInfo />,
       },
     ],
   },
