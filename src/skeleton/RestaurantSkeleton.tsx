@@ -1,6 +1,8 @@
 function RestaurantSkeleton() {
   let a = [1, 2, 3, 4, 5,6,7,8,9,10,12,13];
   return (
+    <div>
+            <div className="mb-5 font-bold"><div className="skeleton h-6 w-100"></div></div>
     <div className="flex gap-5 flex-wrap">
       {a.map((val) => {
         return (
@@ -17,6 +19,7 @@ function RestaurantSkeleton() {
           </div>
         );
       })}
+    </div>
     </div>
   );
 }

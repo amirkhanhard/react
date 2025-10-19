@@ -56,14 +56,18 @@ const Home: React.FC = () => {
   if (!apiResponse) return <RestaurantSkeleton />;
 
   return (
-    <div className="flex flex-wrap gap-5">
-      {restaurants.map((res, idx) => {
-        const { promoted } = res.info;
+    <div>
+      <div className="m-5 font-bold">What's on your mind?</div>
+      <div className="flex flex-wrap gap-5">
+        {restaurants.map((res, idx) => {
+          const { promoted } = res.info;
 
-        const Component = promoted || idx % 3 === 0 ? WithPromotedLabel : Restaurant;
+          const Component =
+            promoted || idx % 3 === 0 ? WithPromotedLabel : Restaurant;
 
-        return <Component key={idx} restaurant={res} />;
-      })}
+          return <Component key={idx} restaurant={res} />;
+        })}
+      </div>
     </div>
   );
 };

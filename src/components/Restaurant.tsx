@@ -37,7 +37,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
   );
 };
 
-// ✅ Correctly typed Higher-Order Component (HOC)
+
 export const withPromotedLabel = (
   WrappedComponent: React.ComponentType<RestaurantProps>
 ): React.FC<RestaurantProps> => {
