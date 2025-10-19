@@ -1,5 +1,4 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
-import React, { useState, type ChangeEvent } from "react";
 import Recommended from "./Recommended";
 
 interface CustomProps {
@@ -23,7 +22,7 @@ export default function RestaurantTabs({ info, showItem, setShowItemIndex }: Cus
         <div className="text-lg font-bold uppercase  opacity-60">{title}</div>
         <button
           className="btn btn-square btn-ghost float-right"
-          onClick={(e: any) => {
+          onClick={() => {
             setShowItemIndex();
           }}
         >

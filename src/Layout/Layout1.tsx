@@ -1,5 +1,4 @@
 import React from "react";
-import type { ReactNode } from "react";
 import Header from "../components/Header";
 import { Outlet } from "react-router-dom";
 // import Hero from "../components/Hero";

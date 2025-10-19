@@ -11,7 +11,7 @@ interface RestaurantInfo {
 interface RestaurantProps {
   restaurant: {
     info: RestaurantInfo;
-  };
+  }
 }
 
 const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {

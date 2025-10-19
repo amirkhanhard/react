@@ -4,7 +4,6 @@ import json53745 from "../json/53745.json";
 import json24144 from "../json/24144.json";
 import RecommendedSkeleton from "../skeleton/RecommendedSkeleton";
 import RestaurantTabs from "../components/RestaurantTabs";
-import { Star } from "lucide-react";
 
 function RestaurantInfo() {
   const { id } = useParams();
@@ -13,11 +12,11 @@ function RestaurantInfo() {
   useEffect(() => {
     const fetchRestaurantInfo = async () => {
       try {
-        const resUrl = import.meta.env.VITE_RESTAURANT_INFO as string;
-        const restaurantUrl = resUrl.replace("RESTAURANT_ID", id);
+        // const resUrl = import.meta.env.VITE_RESTAURANT_INFO as string;
+        // const restaurantUrl = resUrl.replace("RESTAURANT_ID", id);
         // console.log(restaurantUrl);
 
-        const response = await fetch(restaurantUrl);
+        // const response = await fetch(restaurantUrl);
         // const restaurantInfo = await response.json();
         // console.log(response);
 
@@ -47,7 +46,7 @@ function RestaurantInfo() {
     restaurantInformation?.data?.cards?.[2]?.card?.card?.info;
   // console.log(infoArray);
 
-  const [showItemIndex, setShowItemIndex] = useState(2);
+  const [showItemIndex, setShowItemIndex] = useState<any>(null);
   if (!infoArray) {
     return <RecommendedSkeleton />;
   }

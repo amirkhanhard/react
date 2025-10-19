@@ -8,6 +8,7 @@ interface RestaurantInfo {
   locality: string;
   costForTwo: string;
   promoted?: boolean;
+  id:string;
 }
 
 interface RestaurantType {
