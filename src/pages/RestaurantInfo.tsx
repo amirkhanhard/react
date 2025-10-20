@@ -144,7 +144,11 @@ function RestaurantInfo() {
                 key={idx}
                 info={info}
                 showItem={showItemIndex == idx ? true : false}
-                setShowItemIndex = {()=> {setShowItemIndex(idx)}}
+                setShowItemIndex={() => {
+                  setShowItemIndex(() => {
+                    return idx == showItemIndex ? null : idx;
+                  });
+                }}
               />
             );
           })}

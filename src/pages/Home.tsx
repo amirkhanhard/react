@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RestaurantSkeleton from "../skeleton/RestaurantSkeleton";
 import Restaurant, { withPromotedLabel } from "../components/Restaurant";
+import UserContext from "../context/UserContext";
 
 interface RestaurantInfo {
   name: string;
@@ -34,7 +35,7 @@ interface ApiResponse {
 const Home: React.FC = () => {
   const [apiResponse, setApiResponse] = useState<ApiResponse | null>(null);
   const WithPromotedLabel = withPromotedLabel(Restaurant);
-
+  const {user} = useContext<any>(UserContext);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,10 +56,11 @@ const Home: React.FC = () => {
       ?.restaurants ?? [];
 
   if (!apiResponse) return <RestaurantSkeleton />;
-
   return (
     <div>
-      <div className="m-5 font-bold">What's on your mind?</div>
+      <div className="m-5 font-bold">What's on your mind?
+        {user.name}
+      </div>
       <div className="flex flex-wrap gap-5">
         {restaurants.map((res, idx) => {
           const { promoted } = res.info;

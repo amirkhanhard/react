@@ -8,7 +8,7 @@ interface CustomProps {
 }
 export default function RestaurantTabs({ info, showItem, setShowItemIndex }: CustomProps) {
   const currInfo = info?.card?.card;
-    console.log(showItem);
+    // console.log(showItem);
   const title = currInfo?.title || "N/A";
 //   if (!title) {
 //     return;
@@ -22,9 +22,8 @@ export default function RestaurantTabs({ info, showItem, setShowItemIndex }: Cus
         <div className="text-lg font-bold uppercase  opacity-60">{title}</div>
         <button
           className="btn btn-square btn-ghost float-right"
-          onClick={() => {
-            setShowItemIndex();
-          }}
+          // onClick={setShowItemIndex}
+          onClick={()=>{setShowItemIndex()}}
         >
           {!showItem ? <ChevronDown /> : <ChevronUp />}
         </button>
