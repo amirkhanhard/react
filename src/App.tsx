@@ -1,12 +1,10 @@
-import './index.css'
+import './App.css';
 
-function App() {
-
+export function App() {
   return (
     <>
-    
+      <h1>Parcel React App</h1>
+      <p>Edit <code>src/App.tsx</code> to get started!</p>
     </>
-  )
+  );
 }
-
-export default App

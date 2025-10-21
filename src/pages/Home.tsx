@@ -39,7 +39,7 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const url = import.meta.env.VITE_API1 as string;
+        const url = process.env.VITE_API1 as string;
         const response = await fetch(url);
         const data = await response.json();
         setApiResponse(data);

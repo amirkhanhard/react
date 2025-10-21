@@ -20,7 +20,7 @@ const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
     <div className="card bg-base-100 w-70 shadow-sm">
       <figure>
         <img
-          src={`${import.meta.env.VITE_IMAGE_PREFIX}/${cloudinaryImageId}`}
+          src={`${process.env.VITE_IMAGE_PREFIX}/${cloudinaryImageId}`}
           alt={name}
           width="200"
         />

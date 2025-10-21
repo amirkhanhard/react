@@ -12,7 +12,7 @@ function RestaurantInfo() {
   useEffect(() => {
     const fetchRestaurantInfo = async () => {
       try {
-        // const resUrl = import.meta.env.VITE_RESTAURANT_INFO as string;
+        // const resUrl = process.env.VITE_RESTAURANT_INFO as string;
         // const restaurantUrl = resUrl.replace("RESTAURANT_ID", id);
         // console.log(restaurantUrl);
 
