@@ -1,10 +1,12 @@
 import './App.css';
+import Contact from './components/Contact';
+import Hello from './components/Hello';
 
 export function App() {
   return (
     <>
-      <h1>Parcel React App</h1>
-      <p>Edit <code>src/App.tsx</code> to get started!</p>
+      <Contact/>
+      <Hello name="Amir" />
     </>
   );
 }
