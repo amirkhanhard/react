@@ -1,5 +1,8 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { addProduct } from "../store/cartSlice";
+import { X } from "lucide-react";
 
 interface RestaurantInfo {
   name: string;
@@ -15,6 +18,10 @@ interface RestaurantProps {
 }
 
 const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
+  const dispatch = useDispatch();
+  const handleAddProduct = (obj:any) => {
+    dispatch(addProduct(obj));
+  }
   const { name, cloudinaryImageId, locality, costForTwo,id } = restaurant?.info;
   return (
     <div className="card bg-base-100 w-70 shadow-sm">
@@ -30,7 +37,8 @@ const Restaurant: React.FC<RestaurantProps> = ({ restaurant }) => {
         <p>{locality}</p>
         <p>{costForTwo}</p>
         <div className="card-actions justify-start">
-          <button className="btn btn-primary">Add to cart</button>
+          <button className="btn btn-primary" onClick={()=> handleAddProduct(restaurant)}>Add to cart</button>
+          
         </div>
       </div>
     </div>

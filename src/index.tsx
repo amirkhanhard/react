@@ -9,6 +9,9 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import User from "./pages/User";
 import RestaurantInfo from "./pages/RestaurantInfo";
+import { Provider } from "react-redux";
+import {store} from "./store/appStore"
+import Cart from "./pages/Cart";
 
 const Contact = lazy(() => import("./pages/Contact"));
 
@@ -42,12 +45,18 @@ const router = createBrowserRouter([
         path: "/restaurant/:id",
         element: <RestaurantInfo />,
       },
+      {
+        path: "/cart",
+        element: <Cart />,
+      }
     ],
   },
 ]);
 
 createRoot(document.getElementById("app") as HTMLElement).render(
   <StrictMode>
+    <Provider store={store}>
       <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );
