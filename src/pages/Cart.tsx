@@ -3,7 +3,7 @@ import RestaurantSkeleton from "../skeleton/RestaurantSkeleton";
 import Restaurant, { withPromotedLabel } from "../components/Restaurant";
 import UserContext from "../context/UserContext";
 import { useDispatch, useSelector } from "react-redux";
-import { removeProduct } from "../store/cartSlice";
+import { removeProduct, clearCart as clearCartRTK } from "../store/cartSlice";
 
 interface RestaurantInfo {
   name: string;
@@ -44,7 +44,9 @@ const Cart: React.FC = () => {
   const removeProductFromCart = (id) => {
     dispatch(removeProduct({ id }));
   };
-
+  const clearCart = () => {
+    dispatch(clearCartRTK());
+  };
   return (
     <div>
       <div className="m-5 font-bold">
@@ -55,6 +57,15 @@ const Cart: React.FC = () => {
         <h1>
           <center>No Product Found</center>
         </h1>
+      ) : (
+        ""
+      )}
+      {restaurants?.length ? (
+          <div className="card-actions justify-center m-2 ">
+            <button className="btn btn-primary" onClick={() => clearCart()}>
+              Clear Cart
+            </button>
+        </div>
       ) : (
         ""
       )}
