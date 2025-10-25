@@ -13,10 +13,10 @@ import UserContext from "../context/UserContext";
 // const Layout1: React.FC<Layout1Props> = ({ children }) => {
 const Layout1: React.FC = () => {
   const status = false; // useOnlineStatus();
-  const [user, setUser] = useState<any>({name:"amir1"});
+  const [user, setUser] = useState<any>({ name: "amir1" });
   if (!status) {
     return (
-      <UserContext.Provider value={{user,setUser}}>
+      <UserContext.Provider value={{ user, setUser }}>
         <Header />
         {/* <Hero /> */}
         <div className="px-5 py-5">

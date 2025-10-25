@@ -3,8 +3,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Contact from '../pages/Contact';
 
-
-test('renders the Hello component', () => {
+test('renders the Contact component', () => {
   //  render component
   render(<Contact />);
 

@@ -12,7 +12,7 @@ const todosSlice = createSlice({
       // state.items = [action.payload];
     },
     removeProduct(state: any, action: any) {
-      console.log(state.items);
+    //   console.log(state.items);
       state.items = state.items.filter((res) => {
         return res.info.id != action.payload.id;
       });
