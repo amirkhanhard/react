@@ -27,7 +27,7 @@ const ErrorComponent: React.FC<ErrorComponentProps> = ({
 
       {onRetry && (
         <button
-          onClick={onRetry}
+          onClick={()=>onRetry(" - error component")}
           className="px-5 py-2 bg-red-500 text-white rounded-xl hover:bg-red-600 transition-colors duration-200 shadow-sm"
         >
           Try Again

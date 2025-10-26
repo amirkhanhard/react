@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout1 />,
-    errorElement: <ErrorComponent />,
+    errorElement: <ErrorComponent onRetry={(val:any)=>{console.log("Try again clicked"+ val)}}/>,
     children: [
       {
         path: "/",

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import { useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import { ShoppingCart } from "lucide-react";
 function Header() {
   const { user, setUser } = useContext<any>(UserContext);
   const cart = useSelector(state => state.items);
+  const [stat, setStat] =  useState<string>("Login");
   return (
     <div className="navbar bg-base-100 shadow-sm" data-testid="my-test-id">
       <div className="navbar-start">
@@ -89,6 +90,7 @@ function Header() {
         </ul>
       </div>
       <div className="navbar-end">
+        <p className="p-2" data-testid="test-stat" onClick={()=>{ setStat(stat => stat == "Login"?"Logout":"Login")}}>{stat}</p>
         <input
           type="text"
           placeholder="Search"

@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Users, HeartHandshake, Pizza } from "lucide-react";
-import bgImage from "../assets/future-work2023-thumb.jpg";
 
 function About() {
   return (
